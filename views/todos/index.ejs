@@ -1,0 +1,53 @@
+<h2>
+  <%= title %>
+</h2>
+
+<div class="todos-list">
+  <% if (todos.length===0) { %>
+    <p>Aucun todo pour le moment.</p>
+    <% } else { %>
+      <% todos.forEach(todo=> { %>
+        <div class="todo-item <%= todo.completed ? 'completed' : '' %>" data-id="<%= todo._id %>">
+          <h3>
+            <%= todo.title %>
+          </h3>
+          <p>
+            <%= todo.description %>
+          </p>
+          <div class="todo-actions">
+            <a href="/todos/<%= todo._id %>">Voir détails</a>
+
+            <button class="toggle-status" data-id="<%= todo._id %>">
+              <%= todo.completed ? 'Marquer comme non terminé' : 'Marquer comme terminé' %>
+            </button>
+
+            <a href="/todos/<%= todo._id %>/edit" class="edit-button">Modifier</a>
+
+            <form action="/todos/<%= todo._id %>/delete" method="POST" style="display: inline;">
+              <button type="submit" class="delete-button"
+                onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce todo?')">
+                Supprimer
+              </button>
+            </form>
+          </div>
+        </div>
+        <% }); %>
+          <% } %>
+</div>
+
+<h3>Ajouter un nouveau Todo</h3>
+<form action="/todos" method="POST">
+  <div class="form-group">
+    <label for="title">Titre:</label>
+    <input type="text" id="title" name="title" required>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" rows="3" required></textarea>
+  </div>
+
+  <button type="submit">Ajouter</button>
+</form>
+
+<script src="/js/todos.js"></script>
