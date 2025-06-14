@@ -298,4 +298,4 @@ Si vous avez des questions ou besoin d'aide :
 
 ---
 
-Made by Smail Oubih and Ahmed Ouarrali (https://github.com/smail7777)
+Made by Smail (https://github.com/smail7777)
